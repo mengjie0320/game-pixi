@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>你画我猜</title>
+        <style>
+            .draw-board {
+                background-color: #ccc;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="game">
+            <div class="intro">
+                你画我猜h
+            </div>
+            <div class="game-body">
+                <div class="draw-board">
+                    <div id="canvas"></div>
+                    <div class="operate">
+                        <button>开始游戏</button>
+                        <button id="replay" onclick="replay()">重绘</button>
+                        <div class="brushSize">
+                            <input type="number" value="1" min="1" id="fontSize" onchange="setBrushSize()">
+                            <span style="margin-left:12px;width:95px">画笔粗细：<span id="lineNum">1</span></span>
+
+                        </div>
+                        <!-- <button onclick="setBrushColor()">切换画笔颜色</button><br/> -->
+                        <div class="brushColor">
+                            <input type="color" id="fontColor" onchange="setBrushColor()"> 画笔颜色
+                        </div>
+                        <button id="brushType" onclick="changeBrushType()">橡皮擦</button>
+                    </div>
+                </div>
+                <div class="float-operate"></div>
+            </div>
+            <div class="game-intro"></div>
+        </div>
+        <script>
+            // TODO - mj：页面事件同类事件绑定
+            // replay()
+        </script>
+    </body>
+</html>

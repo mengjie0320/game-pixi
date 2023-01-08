@@ -2,11 +2,13 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { entryMap, htmlList } = require('./pages');
 
 module.exports = {
-    entry: {
-        main: './src/main.ts'
-    },
+    // entry: {
+    //     main: './src/main.ts'
+    // },
+    entry: entryMap,
     resolve: {
         extensions: ['.ts', '.js', '.scss']
     },
@@ -36,7 +38,8 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({template: './src/index.html'}),
+        ...htmlList,
+        // new HtmlWebpackPlugin({template: './src/index.html'}),
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash].css', 
         }),  // 置于html插件之后
