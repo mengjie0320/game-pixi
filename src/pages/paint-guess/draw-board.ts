@@ -5,8 +5,8 @@ export interface Position {
     y: number | null;
 }
 export interface SavePosition {
-    lastPosition: Position | null;
-    curPosition: Position | null;
+    lastPosition: Position;
+    curPosition: Position;
     brushColor: string;
     brushSize: number;
     brushOpacity: number;
@@ -106,8 +106,6 @@ export class DrawBoard {
                 this.lastPosition.y = this.curPosition.y;
             }
         
-            
-        
             this.app.view.addEventListener("pointerup", mouseUp);
         };
         
@@ -170,13 +168,13 @@ export class DrawBoard {
             const { lastPosition, curPosition, brushColor, brushSize, brushOpacity } = this.savePositionList[i];
             this.graphics.lineStyle(brushSize, brushColor, brushOpacity);
             // console.log('replay, lastPosition', JSON.stringify(lastPosition), 'curPosition', JSON.stringify(curPosition));
-            if (this.lastPosition.x && this.lastPosition.y) {
-                this.graphics.moveTo(this.lastPosition.x, this.lastPosition.y);
+            if (lastPosition?.x && lastPosition?.y) {
+              this.graphics.moveTo(lastPosition?.x, lastPosition?.y);
             }
-            if (this.curPosition.x && this.curPosition.y) {
-                this.graphics.lineTo(this.curPosition.x, this.curPosition.y);
-                this.lastPosition.x = this.curPosition.x;
-                this.lastPosition.y = this.curPosition.y;
+            if (curPosition?.x && curPosition?.y) {
+              this.graphics.lineTo(curPosition?.x, curPosition?.y);
+              lastPosition.x = curPosition?.x;
+              lastPosition.y = curPosition?.y;
             }
             await this.delay();
         }
